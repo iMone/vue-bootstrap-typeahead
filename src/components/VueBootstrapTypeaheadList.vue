@@ -49,6 +49,10 @@ export default {
     textVariant: {
       type: String
     },
+    exactMatch: {
+      type: Boolean,
+      default: false
+    },
     maxMatches: {
       type: Number,
       default: 10
@@ -73,7 +77,8 @@ export default {
     },
 
     escapedQuery() {
-      return escapeRegExp(sanitize(this.query))
+      const escapedRegExp = escapeRegExp(sanitize(this.query))
+      return this.exactMatch ? escapedRegExp : escapedRegExp.split(' ').join('|')
     },
 
     matchedItems() {
