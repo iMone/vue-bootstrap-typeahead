@@ -32,6 +32,7 @@
       :data="formattedData"
       :background-variant="backgroundVariant"
       :text-variant="textVariant"
+      :exactMatch="exactMatch"
       :maxMatches="maxMatches"
       :minMatchingChars="minMatchingChars"
       @hit="handleHit"
@@ -83,6 +84,10 @@ export default {
     inputClass: {
       type: String,
       default: ''
+    },
+    exactMatch: {
+      type: Boolean,
+      default: false
     },
     maxMatches: {
       type: Number,
